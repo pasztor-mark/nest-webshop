@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>f</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+  <form method="post" style="display: flex; flex-direction: column; gap: 5px; margin: auto;">
+    <select name="termek">
+      <option value="iPhone 16">iPhone 16</option>
+      <option value="Galaxy S25">Galaxy S25</option>
+      <option value="Nokia 3310">Nokia 3310</option>
+    </select>
+    Név<input type="text" name="nev" placeholder="Nagy János" />
+    Irányítószám<input type="text" name="irszam" placeholder="0000" pattern="^\d{4}$" />
+    Város<input type="text" name="varos" placeholder="Város" />
+    Utca<input type="text" name="utca" placeholder="Fő utca" />
+    Házszám<input type="text" name="hazszam" placeholder="1" />
+    <hr>
+    Kuponkód<input type="text" name="kupon" placeholder="1" pattern="^[A-Z]{2}-\d{4}$" />
+    <hr>
+    Bankkártyaszám <input type="text" name="kartyaszam" placeholder="XXXX-XXXX-XXXX-XXXX"
+      pattern="^\d{4}-\d{4}-\d{4}-\d{4}$" />
+    Lejárat <input type="text" name="lejarat" placeholder="01/25" pattern="^(0[1-9]|1[0-2])/(2[4-9]|[3-9][0-9])$
+      " />
+    CVC <input type="text" name="cvc" placeholder="111" pattern="^\d{3}$
+      " />
+    <button type="submit">Fizetés</button>
+  </form>
+</body>
+
+</html>

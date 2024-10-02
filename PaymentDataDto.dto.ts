@@ -6,4 +6,8 @@ export class PaymentDataDto {
   utca: string;
   hazszam: string;
   kupon: string;
+  kartyaszam: string;
+  lejarat: string;
+  cvc: string;
+
 }
