@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Query, Render, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Query, Render, Post, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PaymentDataDto } from 'PaymentDataDto.dto';
 
@@ -14,7 +14,24 @@ export class AppController {
     };
   }
   @Post()
-  createPayment(@Body() createPaymentDto: PaymentDataDto) {
-    console.log(createPaymentDto)
-  }
+  createPayment(@Body() createPaymentDto: PaymentDataDto, @Res() res: Response) {
+    let errors = []
+    if (parseInt(createPaymentDto.cvc) > 0 && parseInt(createPaymentDto.cvc) < 1000) {
+      errors.push("Érvénytelen CVC")
+    }
+    if (parseInt(createPaymentDto.irszam) > 999 && parseInt(createPaymentDto.cvc) < 10000) {
+      errors.push("Érvénytelen irányítószám")
+    }
+    
+    if (parseInt(createPaymentDto.hazszam) == 0) {
+      errors.push("Érvénytelen házszám")
+    }
+
+    if (errors) {
+      throw new Error("hiba")
+    }
+    else {
+      return createPaymentDto
+    }
+}
 }

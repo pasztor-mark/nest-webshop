@@ -16,8 +16,8 @@
       <option value="Galaxy S25">Galaxy S25</option>
       <option value="Nokia 3310">Nokia 3310</option>
     </select>
-    Név<input type="text" name="nev" placeholder="Nagy János" />
-    Irányítószám<input type="text" name="irszam" placeholder="0000" pattern="^\d{4}$" />
+    Név<input type="text" name="nev" id="nev" placeholder="Nagy János" />
+    Irányítószám<input type="text" id="irszam" name="irszam" placeholder="0000" pattern="^\d{4}$" />
     Város<input type="text" name="varos" placeholder="Város" />
     Utca<input type="text" name="utca" placeholder="Fő utca" />
     Házszám<input type="text" name="hazszam" placeholder="1" />
@@ -26,9 +26,9 @@
     <hr>
     Bankkártyaszám <input type="text" name="kartyaszam" placeholder="XXXX-XXXX-XXXX-XXXX"
       pattern="^\d{4}-\d{4}-\d{4}-\d{4}$" />
-    Lejárat <input type="text" name="lejarat" placeholder="01/25" pattern="^(0[1-9]|1[0-2])/(2[4-9]|[3-9][0-9])$
+    Lejárat <input type="text" name="lejarat" placeholder="01/25"
       " />
-    CVC <input type="text" name="cvc" placeholder="111" pattern="^\d{3}$
+    CVC <input type="text" name="cvc" placeholder="111"
       " />
     <button type="submit">Fizetés</button>
   </form>
