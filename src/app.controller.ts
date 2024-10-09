@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Query, Render, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Query, Render, Post, Res, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PaymentDataDto } from 'PaymentDataDto.dto';
 
@@ -9,17 +9,25 @@ export class AppController {
   @Get()
   @Render('index')
   getHello() {
+    let errors: string[] = []
     return {
-      message: this.appService.getHello()
-    };
+      termek: undefined,
+      nev: undefined,
+      irszam: undefined,
+      varos: undefined,
+      utca: undefined,
+      hazszam: undefined,
+      kupon: undefined
+    }
   }
   @Post()
+  @Render('index')
   createPayment(@Body() createPaymentDto: PaymentDataDto, @Res() res: Response) {
-    let errors = []
-    if (parseInt(createPaymentDto.cvc) > 0 && parseInt(createPaymentDto.cvc) < 1000) {
+    let errors: string[] = []
+    if (parseInt(createPaymentDto.cvc) < 99 || parseInt(createPaymentDto.cvc) > 1000) {
       errors.push("Érvénytelen CVC")
     }
-    if (parseInt(createPaymentDto.irszam) > 999 && parseInt(createPaymentDto.cvc) < 10000) {
+    if (parseInt(createPaymentDto.irszam) < 999 || parseInt(createPaymentDto.cvc) > 10000) {
       errors.push("Érvénytelen irányítószám")
     }
     
@@ -27,11 +35,21 @@ export class AppController {
       errors.push("Érvénytelen házszám")
     }
 
-    if (errors) {
-      throw new Error("hiba")
+    if (errors.length > 0) {
+      console.log(errors)
+      return {
+        termek: createPaymentDto.termek,
+        nev: createPaymentDto.nev,
+        irszam: createPaymentDto.irszam,
+        varos: createPaymentDto.varos,
+        utca: createPaymentDto.utca,
+        hazszam: createPaymentDto.hazszam,
+        kupon: createPaymentDto.kupon,
+      }
     }
     else {
-      return createPaymentDto
+      console.log(createPaymentDto)
+      
     }
 }
 }

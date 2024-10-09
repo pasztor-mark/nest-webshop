@@ -7,22 +7,31 @@
   <title>f</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
 </head>
 
 <body>
-  <form method="post" style="display: flex; flex-direction: column; gap: 5px; margin: auto;">
+  <form method="post" style="display: flex; flex-direction: column; gap: 5px; margin: auto;" value=
+  <%-termek%> >
     <select name="termek">
       <option value="iPhone 16">iPhone 16</option>
       <option value="Galaxy S25">Galaxy S25</option>
       <option value="Nokia 3310">Nokia 3310</option>
     </select>
-    Név<input type="text" name="nev" id="nev" placeholder="Nagy János" />
-    Irányítószám<input type="text" id="irszam" name="irszam" placeholder="0000" pattern="^\d{4}$" />
-    Város<input type="text" name="varos" placeholder="Város" />
-    Utca<input type="text" name="utca" placeholder="Fő utca" />
-    Házszám<input type="text" name="hazszam" placeholder="1" />
+    Név<input type="text" name="nev" id="nev" placeholder="Nagy János"
+    value=
+    <%-nev%> />
+    Irányítószám<input type="text" id="irszam" name="irszam" placeholder="0000" pattern="^\d{4}$" value=
+    <%-irszam%> />
+    Város<input type="text" name="varos" placeholder="Város" value=
+    <%-varos%> />
+    Utca<input type="text" name="utca" placeholder="Fő utca" value=
+    <%-utca%> />
+    Házszám<input type="text" name="hazszam" placeholder="1" value=
+    <%-hazszam%> />
     <hr>
-    Kuponkód<input type="text" name="kupon" placeholder="1" pattern="^[A-Z]{2}-\d{4}$" />
+    Kuponkód<input type="text" name="kupon" placeholder="XX-01234" value=
+    <%-kupon%>>
     <hr>
     Bankkártyaszám <input type="text" name="kartyaszam" placeholder="XXXX-XXXX-XXXX-XXXX"
       pattern="^\d{4}-\d{4}-\d{4}-\d{4}$" />
@@ -32,6 +41,7 @@
       " />
     <button type="submit">Fizetés</button>
   </form>
+  
 </body>
 
 </html>
